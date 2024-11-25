@@ -44,8 +44,11 @@ server.post('/submit', (req, res) => {
 
 
 // Start the server
-let port = 80;
-if (process.argv[2] === 'local') {
-  port = 8080;
-}
-server.listen(port, () => console.log('Ready on localhost!'));
+// let port = 80;
+// if (process.argv[2] === 'local') {
+//   port = 8080;
+// }
+// server.listen(port, () => console.log('Ready on localhost!'));
+
+const port = process.env.PORT || 3000;
+server.listen(port, () => console.log(`Server is running on port ${port}`));
