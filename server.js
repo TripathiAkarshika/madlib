@@ -6,14 +6,14 @@ const server = express();
 server.use(express.urlencoded({ extended: true }));
 server.use(logger('dev'));
 
+// Routes
+server.get('/do_a_random', (req, res) => {
+    res.send(`Your number is: ${Math.floor(Math.random() * 100) + 1}`)
+  })
 
-
-// Serve static files from the "public" directory
-server.use(express.static(path.join(__dirname, 'public')));
-
-// Serve static files from the "public" folder
-const publicServedFilesPath = path.join(__dirname, 'public');
-server.use(express.static(publicServedFilesPath));
+// Setup static page serving for all the pages in "public"
+const publicServedFilesPath = path.join(__dirname, 'public')
+server.use(express.static(publicServedFilesPath))
 
 
 // Handle form submission
@@ -35,9 +35,9 @@ server.post('/submit', (req, res) => {
   `;
 
   res.send(`
-    <h1>Mad Lib Result</h1>
+    <h1>Your Mad Lib Result Is Ready!!!</h1>
     <p>${madLib}</p>
-    <a href="/ITC505/lab-7/index.html">Create Another Mad Lib</a>
+    <a href="/ITC505/lab-7/index.html">Do that again!!</a>
   `);
   
 });
